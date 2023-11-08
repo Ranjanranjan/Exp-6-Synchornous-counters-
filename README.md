@@ -46,43 +46,81 @@ This type of counter is normally referred to as a Down Counter, (CTD). In a bina
 
 4-bit Count Down Counter
 ### Procedure
-/* write all the steps invloved */
+Connect the supply (+5V) to the circuit. Switch ON the main switch. If the output is 1, then the bulb glows.
 
 
 
 ### PROGRAM 
-/*
+```
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
+Developed by: Ranjan K
+RegisterNumber: 212222230116
+```
 
+## UPCOUNTER:
+```
+module uc(clk,A);
+input clk;
+output reg [3:0]A;
+always@(posedge clk)
+begin
+A[3]=((A[2]&A[1])&A[0])^A[3];
+A[2]=(A[1]&A[0])^A[2];
+A[1]=(A[0]^A[1]);
+A[0]=1^A[0];
+end
+endmodule
+```
 
+## DOWNCOUNTER:
+```
+module dc(clk,A);
+input clk;
+output reg [3:0]A;
+always @(posedge clk)
+begin
+A[3]=((~A[2])&(~A[1])&(~A[0]))^A[3];
+A[2]=((~A[1])&(~A[0]))^A[2];
+A[1]=(~A[0])^A[1];
+A[0]=1^A[0];
+end
+endmodule
 
-
-
+```
 
 ### RTL LOGIC UP COUNTER AND DOWN COUNTER  
+# UPCOUNTER:
+![245136627-0a4b5a96-c4d0-4a3d-a501-4d57d46f37b8](https://github.com/Praveenkumar2004-dev/Exp-7-Synchornous-counters-/assets/119559827/1214d605-8b18-4b2e-892e-278e7701c19c)
 
 
 
-
-
+# DOWNCOUNTER:
+![245136699-692e0239-810e-40fe-85d4-8753d18abb66](https://github.com/Praveenkumar2004-dev/Exp-7-Synchornous-counters-/assets/119559827/69375c5b-2e44-46ba-b425-14b6bda31256)
 
 
 
 
 ### TIMING DIGRAMS FOR COUNTER  
+# UPCOUNTER:
+![245136866-97556c87-e03f-4dc5-b1a5-e9c7cfe05365](https://github.com/Praveenkumar2004-dev/Exp-7-Synchornous-counters-/assets/119559827/01c2090c-f034-4b7e-a3c9-eba2d978a67e)
 
+
+
+# DOWNCOUNTER:
+![245136920-f4328c29-280a-4d61-a943-c65419b9530e](https://github.com/Praveenkumar2004-dev/Exp-7-Synchornous-counters-/assets/119559827/3b003fc5-ef3a-4900-8c97-6f9271283481)
 
 
 
 
 ### TRUTH TABLE 
+# Upcounter:
+![truth ex06 up](https://github.com/Praveenkumar2004-dev/Exp-7-Synchornous-counters-/assets/119559827/e73019ba-ed43-4461-8ca6-c5f5711b5c2c)
+
+
+# Downcounter:
+![truth06down](https://github.com/Praveenkumar2004-dev/Exp-7-Synchornous-counters-/assets/119559827/cd7c6d08-5c82-468d-aae5-eeb56cef3b55)
 
 
 
-
-
-
-### RESULTS 
+### RESULTS:
+Thus,The 4-bit up and down counter is implemented successfully.
